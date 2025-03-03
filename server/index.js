@@ -2,7 +2,10 @@ require("dotenv").config();
 
 const express = require("express");
 const mongoose = require("mongoose");
-const taskRoutes = require("./routes/task");
+
+// import route pages
+const taskRoutes = require("./routes/taskRoutes");
+const userRoutes = require("./routes/userRoutes");
 
 const app = express();
 
@@ -13,14 +16,23 @@ app.get("/", (req, res) => {
   res.json({ message: "Hello from the server" });
 });
 
-// port
-
-PORT = process.env.PORT;
-
-app.listen(PORT, () => {
-  console.log(`Port is running on http://localhost:${PORT}`);
-});
-
-// Task Routes
-
+// task routes
 app.use("/api/tasks", taskRoutes);
+app.use("/api/user", userRoutes);
+
+// db connect
+
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => {
+    PORT = process.env.PORT;
+
+    app.listen(PORT, () => {
+      console.log(
+        `Connected Successfully ! Port is running on http://localhost:${PORT}`
+      );
+    });
+  })
+  .catch((error) => {
+    console.log(error);
+  });
