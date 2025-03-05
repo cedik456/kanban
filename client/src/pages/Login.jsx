@@ -3,9 +3,7 @@ import React from "react";
 const Login = () => {
   return (
     <>
-      <div>
-        <p className="text-8xl">Hello Tailwind</p>
-      </div>
+      <div className="container mx-auto "></div>
     </>
   );
 };
