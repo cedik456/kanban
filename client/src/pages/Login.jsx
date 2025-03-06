@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -10,9 +11,27 @@ const Login = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Login Data", formData);
+
+    try {
+      const response = await axios.post(
+        "http://localhost:4000/api/user/login",
+        formData
+      );
+      console.log(response.data);
+
+      alert("Login Successfully!");
+      alert(`Welcome: ${formData.email}`);
+
+      setFormData({
+        email: "",
+        password: "",
+      });
+    } catch (error) {
+      console.log("Error logging in:", error);
+      alert("Error logging in. Check the console");
+    }
   };
 
   return (
@@ -42,8 +61,8 @@ const Login = () => {
                 className=" p-2 border rounded-md"
               />
             </div>
-            <button className="w-full p-3 bg-black text-white border rounded-md">
-              Submit
+            <button className="w-full p-3 bg-black text-white border rounded-md cursor-pointer active:opacity-65">
+              Login
             </button>
           </form>
         </div>
