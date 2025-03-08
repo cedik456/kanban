@@ -4,7 +4,14 @@ const router = express.Router();
 
 // controller
 
-const { loginUser, signupUser } = require("../controllers/userController");
+const {
+  loginUser,
+  signupUser,
+  getAllUser,
+} = require("../controllers/userController");
+
+// Get all users
+router.get("/", getAllUser);
 
 // Login
 router.post("/login", loginUser);
