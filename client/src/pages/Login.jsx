@@ -64,7 +64,7 @@ const Login = () => {
                 onChange={handleChange}
                 required
                 autoComplete="off"
-                className=" p-2 rounded-sm border text-gray-300 text-sm border-gray-300"
+                className=" p-2 rounded-sm border text-black text-sm border-gray-300"
               />
               {/* <label>Password:</label>
               <input
