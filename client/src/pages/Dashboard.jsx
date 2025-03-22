@@ -1,13 +1,28 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { MdKeyboardArrowDown } from "react-icons/md";
 
 const Dashboard = () => {
+  const [name, setName] = useState("");
+
+  useEffect(() => {
+    const userName = localStorage.getItem("userName");
+    if (userName) {
+      setName(userName);
+    }
+
+    // const fetchUserName = async () => {
+    //   try {
+    //   } catch (error) {}
+    // };
+  });
+
   return (
     <>
       <main>
         <div className="flex gap-2 mt-10 ml-8 items-center text-black mb-12">
           <div className="bg-[#656363] w-7 h-7 rounded-full"></div>
-          <p className="text-xl">Charuzu</p>
+          <p className="text-xl">{name || "Loading..."}</p>
           <MdKeyboardArrowDown className="text-xl" />
         </div>
         <div className="container mx-auto">

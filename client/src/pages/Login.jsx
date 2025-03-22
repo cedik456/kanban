@@ -28,6 +28,10 @@ const Login = () => {
       );
       console.log(response.data);
 
+      const { name } = response.data;
+
+      localStorage.setItem("userName", name);
+
       alert("Login Successfully!");
 
       setFormData({
