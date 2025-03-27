@@ -1,5 +1,5 @@
-import React from "react";
-import TaskCard from "./TaskCard";
+import React from 'react';
+import TaskCard from './TaskCard';
 
 const Column = ({ title, status, tasks, moveTask }) => {
   const filteredTasks = tasks.filter((task) => task.status === status);
