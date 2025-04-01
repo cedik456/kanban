@@ -44,51 +44,53 @@ const Dashboard = () => {
   return (
     <>
       <main>
-        {/* Top user info */}
-        <div className="flex gap-2 mt-10 ml-8 items-center text-black mb-12">
-          <div className="bg-[#656363] w-7 h-7 rounded-full"></div>
-          <p className="text-xl">{name || "Loading..."}</p>
-          <MdKeyboardArrowDown className="text-xl" />
-        </div>
-
-        <div className="container mx-auto">
-          {/* Three columns: To Do, In Progress, Done */}
-          <div className="grid grid-cols-3 gap-4 place-items-center">
-            <Column
-              title="To Do"
-              status="todo"
-              tasks={tasks}
-              moveTask={moveTask}
-            />
-            <Column
-              title="In Progress"
-              status="in-progress"
-              tasks={tasks}
-              moveTask={moveTask}
-            />
-            <Column
-              title="Done"
-              status="done"
-              tasks={tasks}
-              moveTask={moveTask}
-            />
+        <div className="mt-8">
+          {/* Top user info */}
+          <div className="flex gap-2 ml-8 items-center text-black mb-12">
+            <div className="bg-[#656363] w-7 h-7 rounded-full"></div>
+            <p className="text-xl">{name || "Loading..."}</p>
+            <MdKeyboardArrowDown className="text-xl" />
           </div>
 
-          {/* Add New Task Form */}
-          <div className="mt-8 flex items-center gap-2 justify-center">
-            <input
-              type="text"
-              className="border border-gray-400 px-2 py-1 rounded w-1/3"
-              placeholder="New task title"
-              value={newTask}
-              onChange={(e) => setNewTask(e.target.value)}
-            />
-            <button
-              onClick={addTask}
-              className="bg-blue-600 text-white px-4 py-2 rounded"
-            >
-              Add Task
-            </button>
+          <div className="container mx-auto">
+            {/* Three columns: To Do, In Progress, Done */}
+            <div className="grid grid-cols-3 gap-4 place-items-center">
+              <Column
+                title="To Do"
+                status="todo"
+                tasks={tasks}
+                moveTask={moveTask}
+              />
+              <Column
+                title="In Progress"
+                status="in-progress"
+                tasks={tasks}
+                moveTask={moveTask}
+              />
+              <Column
+                title="Done"
+                status="done"
+                tasks={tasks}
+                moveTask={moveTask}
+              />
+            </div>
+
+            {/* Add New Task Form */}
+            <div className="mt-8 flex items-center gap-2 justify-center">
+              <input
+                type="text"
+                className="border border-gray-400 px-2 py-1 rounded w-1/3"
+                placeholder="New task title"
+                value={newTask}
+                onChange={(e) => setNewTask(e.target.value)}
+              />
+              <button
+                onClick={addTask}
+                className="bg-blue-600 text-white px-4 py-2 rounded"
+              >
+                Add Task
+              </button>
+            </div>
           </div>
         </div>
       </main>

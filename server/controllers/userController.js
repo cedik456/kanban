@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const User = require('../models/User');
+const User = require("../models/User");
 
 const loginUser = async (req, res) => {
   try {
@@ -12,12 +12,12 @@ const loginUser = async (req, res) => {
     // }
 
     res.json({
-      message: 'Login Successful',
+      message: "Login Successful",
       userId: user._id,
       name: user.name,
     });
   } catch (error) {
-    res.status(500).json({ message: 'Server Error' });
+    res.status(500).json({ message: "Server Error" });
   }
 };
 
@@ -32,34 +32,33 @@ const signupUser = async (req, res) => {
   }
 };
 
-const getAllUser = async (req, res) => {
-  const user = await User.find();
-
-  res.status(200).json(user);
+const getAllUsers = async (req, res) => {
+  try {
+    const user = await User.find();
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({ message: "Server Error", error: error.message });
+  }
 };
 
-const getAllUsers = (req, res) => {
-  res.send('Get all users');
-};
+// const getAllUsers = (req, res) => {
+//   res.send("Get all users");
+// };
 
-const getUserById = (req, res) => {
-  res.send(`Get user with ID: ${req.params.id}`);
-};
+// const getUserById = (req, res) => {
+//   res.send(`Get user with ID: ${req.params.id}`);
+// };
 
-const updateUser = (req, res) => {
-  res.send(`Update user with ID: ${req.params.id}`);
-};
+// const updateUser = (req, res) => {
+//   res.send(`Update user with ID: ${req.params.id}`);
+// };
 
-const deleteUser = (req, res) => {
-  res.send(`Delete user with ID: ${req.params.id}`);
-};
+// const deleteUser = (req, res) => {
+//   res.send(`Delete user with ID: ${req.params.id}`);
+// };
 
 module.exports = {
   loginUser,
   signupUser,
-  getAllUser,
   getAllUsers,
-  getUserById,
-  updateUser,
-  deleteUser,
 };
